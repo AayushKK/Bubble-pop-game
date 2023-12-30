@@ -78,11 +78,43 @@ const scoreElement = document.getElementById('score-value');
           bubbleContainer.style.paddingLeft = 20+'px';
           bubbleContainer.style.paddingTop = 100+'px';
           
-
+                // reset game
+                  resetgame();
       }
               
   }
-      
+      function resetgame(){
+        // create reset button
+        const resetbutton = document.createElement('button');
+        resetbutton.classList.add('reset');
+        resetbutton.innerHTML='Reset Game';
+        // style reset button
+        resetbutton.style.color = 'white';
+        resetbutton.style.backgroundColor = 'red';
+        resetbutton.style.display = 'flex';
+        resetbutton.style.padding = 10+'px';
+        resetbutton.style.borderRadius = 10+'px';
+        resetbutton.style.fontSize = 20+'px';
+        resetbutton.style.fontWeight = 'bold';
+               
+
+        // add event listener to reset button
+        resetbutton.addEventListener('click', function () 
+        {   //set flag to false
+          flag=false;
+          // reset score
+          score=0;
+          scoreElement.textContent=score;
+          // remove game over message
+          bubbleContainer.innerHTML='';
+          // start a new game
+          startGame = setInterval(createBubble, 1000);
+
+          document.body.removeChild(resetbutton);
+        });
+        document.body.appendChild(resetbutton);
+        
+    }
   
         // start game
     let startGame = setInterval(createBubble, 1000)
