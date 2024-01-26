@@ -96,7 +96,12 @@ const scoreElement = document.getElementById('score-value');
         resetbutton.style.borderRadius = 10+'px';
         resetbutton.style.fontSize = 20+'px';
         resetbutton.style.fontWeight = 'bold';
-               
+
+         // set reset button position
+          bc=document.getElementById('bubble-container');
+          bc.style.alignItems = 'center';
+          bc.style.justifyContent = 'center';
+          bc.appendChild(resetbutton);
 
         // add event listener to reset button
         resetbutton.addEventListener('click', function () 
@@ -110,9 +115,9 @@ const scoreElement = document.getElementById('score-value');
           // start a new game
           startGame = setInterval(createBubble, 1000);
 
-          document.body.removeChild(resetbutton);
+            bc.removeChild(resetbutton);
         });
-        document.body.appendChild(resetbutton);
+       
         
     }
   
